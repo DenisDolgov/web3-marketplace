@@ -1,5 +1,4 @@
 const Hero = () => {
-
   return (
     <section>
       <div className="relative bg-white overflow-hidden">
@@ -42,3 +41,5 @@ const Hero = () => {
     </section>
   )
 }
+
+export default Hero;
