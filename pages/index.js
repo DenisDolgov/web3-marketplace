@@ -1,5 +1,7 @@
 import { Navbar, Footer, Hero, Breadcrumbs } from "@components/common"
 import { EthRates, WalletBar } from "@components/web3"
+import { CourseList } from "@components/course";
+import { OrderCard } from "@components/order";
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
             <Breadcrumbs />
             <WalletBar />
             <EthRates />
+            <CourseList />
+            <OrderCard />
           </div>
         </div>
         <Footer />
