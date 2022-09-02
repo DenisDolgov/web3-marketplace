@@ -13,7 +13,7 @@ export default function Course({ course }) {
       <div className="py-4">
         <CourseHero title={course.title} description={course.description} image={course.coverImage} />
       </div>
-      <KeyPoints />
+      <KeyPoints points={course.wsl} />
       <Curriculum />
       <Modal />
     </>
