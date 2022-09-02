@@ -14,7 +14,7 @@ export default function Course({ course }) {
         <CourseHero title={course.title} description={course.description} image={course.coverImage} />
       </div>
       <KeyPoints points={course.wsl} />
-      <Curriculum />
+      <Curriculum locked />
       <Modal />
     </>
   )
