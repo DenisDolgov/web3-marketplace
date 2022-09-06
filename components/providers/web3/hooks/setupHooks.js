@@ -1,7 +1,7 @@
 import { createUseAccount } from "@components/providers/web3/hooks/useAccount";
 
-export const setupHooks = web3 => {
+export const setupHooks = (...args) => {
   return {
-    useAccount: createUseAccount(web3),
+    useAccount: createUseAccount(...args),
   }
 }
