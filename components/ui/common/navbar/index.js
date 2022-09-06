@@ -30,7 +30,7 @@ const Navbar = () => {
                   ? <Button disabled>Loading...</Button>
                   : isWeb3Loaded
                     ? <Button onClick={connect}>Connect</Button>
-                    : <Button onClick={connect}>Install Metamask</Button>
+                    : <Button onClick={() => window.open('https://metamask.io/download/', '_blank')}>Install Metamask</Button>
               }
             </div>
           </div>
