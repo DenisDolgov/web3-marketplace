@@ -7,6 +7,8 @@ const Navbar = () => {
   const { connect, isLoading, isWeb3Loaded } = useWeb3();
   const { account } = useAccount();
 
+  console.log('ACCOUNT', account);
+
   return (
     <section>
       {account}
