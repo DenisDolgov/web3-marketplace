@@ -27,7 +27,7 @@ const Navbar = () => {
               </Link>
               {
                 isLoading
-                  ? <Button>Loading...</Button>
+                  ? <Button disabled>Loading...</Button>
                   : isWeb3Loaded
                     ? <Button onClick={connect}>Connect</Button>
                     : <Button onClick={connect}>Install Metamask</Button>
