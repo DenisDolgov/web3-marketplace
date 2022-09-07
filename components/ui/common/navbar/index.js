@@ -5,7 +5,8 @@ import {useAccount} from "@components/web3/hooks/useAccount";
 
 const Navbar = () => {
   const { connect, isLoading, isWeb3Loaded } = useWeb3();
-  const { account } = useAccount();
+  const { account: accountSwr } = useAccount();
+  const { data: account } = accountSwr;
 
   return (
     <section>
