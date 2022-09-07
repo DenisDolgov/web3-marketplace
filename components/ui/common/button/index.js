@@ -12,7 +12,7 @@ export default function Button({
 
   return (
     <button
-      className={`disabled:opacity-50 disabled:cursor-not-allowed rounded-md px-8 py-3 border text-base font-medium mr-8 ${className} ${variants[variant]}`}
+      className={`disabled:opacity-50 disabled:cursor-not-allowed rounded-md px-8 py-3 border text-base font-medium ${className} ${variants[variant]}`}
       {...rest}
     >
       {children}
