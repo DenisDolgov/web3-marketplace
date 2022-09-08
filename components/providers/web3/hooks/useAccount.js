@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import useSWR from "swr";
 
-const adminAddresses = ['0x02474a6fd4258c6aF32954aA3CdD94c4F0B318EA'];
+const adminAddresses = ['0x5eda944caedd0d7904066eb9f0b71cb544eed0c54ead9a8255c5bf0b9d5630bb'];
 
 export const createUseAccount = (web3, provider) => () => {
   const { mutate, data, ...rest } = useSWR(web3 ? 'web3/accounts' : null, async () => {
@@ -17,7 +17,7 @@ export const createUseAccount = (web3, provider) => () => {
 
   return {
     account: {
-      isAdmin: adminAddresses.includes(data),
+      isAdmin: data && adminAddresses.includes(web3.utils.keccak256(data)),
       mutate,
       data,
       ...rest
