@@ -1,24 +1,13 @@
 import {useEffect} from "react";
 import useSWR from "swr";
 
-// const fetcher = (...args) => fetch(...args).then(res => res.json());
+const adminAddresses = ['0x02474a6fd4258c6aF32954aA3CdD94c4F0B318EA'];
 
 export const createUseAccount = (web3, provider) => () => {
-  // const [account, setAccount] = useState(null);
-
-  const { mutate, ...rest } = useSWR(web3 ? 'web3/accounts' : null, async () => {
+  const { mutate, data, ...rest } = useSWR(web3 ? 'web3/accounts' : null, async () => {
     const accounts = await web3.eth.getAccounts();
     return accounts[0];
   });
-
-  // useEffect(() => {
-  //   const getAccount = async () => {
-  //     const accounts = await web3.eth.getAccounts();
-  //     setAccount(accounts[0]);
-  //   }
-  //
-  //   web3 && getAccount();
-  // }, [web3]);
 
   useEffect(() => {
     provider && provider.on('accountsChanged', accounts => {
@@ -26,5 +15,12 @@ export const createUseAccount = (web3, provider) => () => {
     });
   }, [provider]);
 
-  return { account: { mutate, ...rest } };
+  return {
+    account: {
+      isAdmin: adminAddresses.includes(data),
+      mutate,
+      data,
+      ...rest
+    }
+  };
 }

@@ -6,7 +6,7 @@ import {useAccount} from "@components/web3/hooks/useAccount";
 const Navbar = () => {
   const { connect, isLoading, isWeb3Loaded } = useWeb3();
   const { account: accountSwr } = useAccount();
-  const { data: account } = accountSwr;
+  const { data: account, isAdmin } = accountSwr;
 
   return (
     <section>
@@ -33,7 +33,7 @@ const Navbar = () => {
                   ? <Button disabled>Loading...</Button>
                   : isWeb3Loaded
                     ? account
-                      ? <Button className="cursor-default" hoverable={false}>Hi there!</Button>
+                      ? <Button className="cursor-default" hoverable={false}>Hi there{isAdmin && ' Admin'}!</Button>
                       : <Button onClick={connect}>Connect</Button>
                     : <Button onClick={() => window.open('https://metamask.io/download/', '_blank')}>Install Metamask</Button>
               }
