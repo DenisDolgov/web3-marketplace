@@ -27,6 +27,7 @@ export const createUseNetwork = (web3, provider) => () => {
   return {
     network: {
       mutate,
+      data,
       target: targetNetwork,
       isSupported: data === targetNetwork,
       ...res,
