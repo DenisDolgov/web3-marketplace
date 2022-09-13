@@ -3,8 +3,7 @@ import { CourseList } from "@ui/course";
 import { BaseLayout } from "@ui/layout";
 import { CourseCard } from "@ui/course";
 import { getAllCourses } from "@content/courses/fetcher";
-import {useAccount} from "@components/hooks/web3/useAccount";
-import {useNetwork} from "@components/hooks/web3/useNetwork"
+import {useAccount, useNetwork} from "@components/hooks/web3";
 
 export default function Marketplace({ courses }) {
   const { account } = useAccount();

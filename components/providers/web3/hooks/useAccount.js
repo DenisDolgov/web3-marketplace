@@ -16,11 +16,9 @@ export const createUseAccount = (web3, provider) => () => {
   }, [provider]);
 
   return {
-    account: {
-      isAdmin: data && adminAddresses.includes(web3.utils.keccak256(data)),
-      mutate,
-      data,
-      ...rest
-    }
+    isAdmin: data && adminAddresses.includes(web3.utils.keccak256(data)),
+    mutate,
+    data,
+    ...rest
   };
 }
