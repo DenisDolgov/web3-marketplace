@@ -14,7 +14,7 @@ const NETWORK_NAMES = {
 const targetNetwork = NETWORK_NAMES[process.env.NEXT_PUBLIC_TARGET_CHAIN_ID];
 
 export const createUseNetwork = (web3, provider) => () => {
-  const { data, mutate, ...res } = useSWR(web3 ? 'web3/network' : null, async () => {
+  const { data, error, mutate, ...res } = useSWR(web3 ? 'web3/network' : null, async () => {
     const chainId = await web3.eth.getChainId();
 
     return NETWORK_NAMES[chainId] ?? chainId;
@@ -28,6 +28,7 @@ export const createUseNetwork = (web3, provider) => () => {
     network: {
       mutate,
       data,
+      isLoading: !data && !error,
       target: targetNetwork,
       isSupported: data === targetNetwork,
       ...res,
