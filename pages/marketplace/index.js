@@ -3,6 +3,7 @@ import { CourseList } from "@ui/course";
 import { BaseLayout } from "@ui/layout";
 import { CourseCard } from "@ui/course";
 import { Button } from "@ui/common";
+import { OrderModal } from "@ui/order";
 import { getAllCourses } from "@content/courses/fetcher";
 import {useAccount, useNetwork} from "@components/hooks/web3";
 
@@ -36,6 +37,7 @@ export default function Marketplace({ courses }) {
           )}
         />}
       </CourseList>
+      <OrderModal isOpen />
     </>
   )
 }
