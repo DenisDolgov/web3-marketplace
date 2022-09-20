@@ -6,10 +6,12 @@ import { Button } from "@ui/common";
 import { OrderModal } from "@ui/order";
 import { getAllCourses } from "@content/courses/fetcher";
 import {useAccount, useNetwork} from "@components/hooks/web3";
+import {useState} from "react";
 
 export default function Marketplace({ courses }) {
   const { account } = useAccount();
   const { network } = useNetwork();
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   return (
     <>
@@ -30,14 +32,14 @@ export default function Marketplace({ courses }) {
           course={course}
           Footer={() => (
             <div className="mt-4">
-              <Button variant="lightPurple">
+              <Button onClick={() => setSelectedCourse(course)} variant="lightPurple">
                 Purchase
               </Button>
             </div>
           )}
         />}
       </CourseList>
-      <OrderModal isOpen />
+      <OrderModal course={selectedCourse} onClose={() => setSelectedCourse(null)} />
     </>
   )
 }
