@@ -3,7 +3,7 @@ import {useHooks} from "@components/providers";
 const enhanceHook = swrRes => {
   return {
     ...swrRes,
-    hasInitialResponse: swrRes.data || swrRes.error,
+    hasInitialResponse: !!(swrRes.data || swrRes.error),
   };
 }
 

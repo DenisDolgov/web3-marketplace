@@ -15,27 +15,25 @@ export default function Marketplace({ courses }) {
   const { eth } = useEthPrice();
   const [selectedCourse, setSelectedCourse] = useState(null);
 
+  const canPurchaseCourse = !!(account.data && network.isSupported);
+
   return (
     <>
       <div className="py-4">
         <WalletBar
           address={account.data}
-          network={{
-            data: network.data,
-            target: network.target,
-            isSupported: network.isSupported,
-            isLoading: network.isLoading,
-          }}
+          network={network}
         />
         <EthRates eth={eth.data} ethPerItem={eth.perItem} />
       </div>
       <CourseList courses={courses}>
         {course => <CourseCard
           key={course.id}
+          disabled={!canPurchaseCourse}
           course={course}
           Footer={() => (
             <div className="mt-4">
-              <Button onClick={() => setSelectedCourse(course)} variant="lightPurple">
+              <Button disabled={!canPurchaseCourse} onClick={() => setSelectedCourse(course)} variant="lightPurple">
                 Purchase
               </Button>
             </div>
