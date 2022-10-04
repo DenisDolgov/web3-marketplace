@@ -1,8 +1,19 @@
-import {EthRates, WalletBar} from "@ui/web3";
-import {Breadcrumbs} from "@ui/common";
-import {useWalletInfo} from "@components/hooks/web3";
+import { EthRates, WalletBar } from "@ui/web3";
+import { Breadcrumbs } from "@ui/common";
+import { useWalletInfo } from "@components/hooks/web3";
 
-const Header = () => {
+const LINKS = [{
+  href: '/marketplace',
+  text: 'Buy',
+}, {
+  href: '/marketplace/courses/owned',
+  text: 'Owned',
+}, {
+  href: '/marketplace/courses/manage',
+  text: 'Manage',
+}]
+
+export default function Header() {
   const { account, network } = useWalletInfo();
 
   return (
@@ -13,10 +24,8 @@ const Header = () => {
       />
       <EthRates />
       <div className="py-4 px-4 sm:px-6 lg:px-8 flex flex-row-reverse">
-        <Breadcrumbs />
+        <Breadcrumbs items={LINKS} />
       </div>
     </>
   )
 }
-
-export default Header;
