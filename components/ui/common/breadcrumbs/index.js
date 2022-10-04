@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ActiveLink } from "@ui/common";
 
 const Breadcrumbs = ({ items }) => {
   return (
@@ -14,9 +14,9 @@ const Breadcrumbs = ({ items }) => {
                   ? 'pl-4'
                   : 'px-4'
             }`}>
-            <Link href={item.href}>
+            <ActiveLink href={item.href}>
               <a>{item.text}</a>
-            </Link>
+            </ActiveLink>
           </li>
         ))}
       </ol>
