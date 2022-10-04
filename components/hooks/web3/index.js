@@ -18,3 +18,14 @@ export const useAccount = () => {
 
   return { account: res };
 }
+
+export const useWalletInfo = () => {
+  const { account } = useAccount();
+  const { network } = useNetwork();
+
+  return {
+    account,
+    network,
+    canPurchaseCourse: !!(account.data && network.isSupported),
+  };
+}
